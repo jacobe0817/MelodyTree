@@ -154,7 +154,7 @@ def print_related_artists(artist):
 
     print_centered("followed by", underline=True)
     if len(followers) == 0:
-        print_centered("** no followers in database**")
+        print_centered("**no followers in database**")
     else:
         print_list(followers, list_for_average_length=all)
     print("\n")
