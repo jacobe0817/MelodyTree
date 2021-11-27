@@ -3,6 +3,7 @@ import json
 from bs4 import BeautifulSoup
 
 
+# hello baby!
 def get_artist_json(main_page):
     artist = {}
     with open(os.path.join("html", main_page), "r", encoding="utf-8") as html_file:
