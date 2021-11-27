@@ -60,6 +60,7 @@ def browse():
     for genre in artists_by_genre:
         print_genre(genre)
 
+
 def print_genre(genre):
     global artists_by_genre
     print_centered(genre, underline=True)
@@ -74,7 +75,7 @@ def genre_search():
         print_centered("Enter (c) to cancel")
         print()
         genres = list(artists_by_genre.keys())
-        genres = sorted(genres, key=lambda genre : len(artists_by_genre[genre]), reverse=True)
+        genres = sorted(genres, key=lambda genre: len(artists_by_genre[genre]), reverse=True)
         genre_strings = [str(i + 1) + ") " + genres[i] for i in range(len(genres))]
         print_list(genre_strings)
         print()
@@ -92,6 +93,7 @@ def genre_search():
             print_centered("**invalid number**")
             print()
 
+
 def print_centered(phrase, underline=False, overline=False):
     if overline:
         print(" " * (56 - len(phrase) // 2), "-" * len(phrase), sep="")
@@ -99,13 +101,15 @@ def print_centered(phrase, underline=False, overline=False):
     if underline:
         print(" " * (56 - len(phrase) // 2), "-" * len(phrase), sep="")
 
+
 def print_list(list_to_print, list_for_average_length=None):
     if list_for_average_length is None:
         list_for_average_length = list_to_print
     string_lengths = [len(item) for item in list_for_average_length]
-    average_length = int(sum(string_lengths)/len(list_for_average_length))
+    average_length = int(sum(string_lengths) / len(list_for_average_length))
     for item in list_to_print:
         print(" " * (53 - average_length // 2), "-", item, sep="")
+
 
 def print_albums(artist):
     global albums_by_artist
@@ -113,6 +117,7 @@ def print_albums(artist):
     print_centered(artist, underline=True)
     print_list(albums_by_artist[artist])
     print("\n")
+
 
 def print_related_artists(artist):
     global artists
@@ -125,7 +130,7 @@ def print_related_artists(artist):
     except:
         similars = []
     try:
-        followers =[follower for follower in artists[artist]["followers"] if follower in artists.keys()]
+        followers = [follower for follower in artists[artist]["followers"] if follower in artists.keys()]
     except:
         followers = []
 
@@ -144,7 +149,6 @@ def print_related_artists(artist):
         print_list(influencers, list_for_average_length=all)
     print("\n")
 
-
     print_centered("similar to", underline=True)
     if len(similars) == 0:
         print_centered("**no similar artists in database**")
@@ -158,8 +162,6 @@ def print_related_artists(artist):
     else:
         print_list(followers, list_for_average_length=all)
     print("\n")
-
-
 
 
 def artist_search():
